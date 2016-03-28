@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Quicksort</title><meta name="twitter:card" content="summary" /><meta name="twitter:site" content="@varunnurab" /><meta name="twitter:title" content="Quicksort" /><meta name="twitter:description" content="Quick Sort"><meta name="description" content="Quick Sort"><meta name="google-site-verification" content="epFgX0s_0RM3CdjwFcsewfXzPov2g8s9ZBOLyaIUH-o"><link rel="icon" href="/assets/favicon.png"><link rel="apple-touch-icon" href="/assets/touch-icon.png"><link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css"><link rel="stylesheet" href="/assets/core.css"><link rel="canonical" href="/notes/quicksort"><link rel="alternate" type="application/atom+xml" title="Barun." href="/feed.xml" /></head><body><aside class="logo"> <a href="/"> <img src="http://www.gravatar.com/avatar/6f91bf41cec90b8d64bffc5853f26b12.png?s=80" class="gravatar"> </a> <span class="logo-prompt">Back to Home</span></aside><main> <noscript><style> article .footnotes { display: block; }</style></noscript><article><div class="center"><h1>Quicksort</h1><time>August 9, 2015</time></div><div class="divider"></div><h1 id="quick-sort">Quick Sort</h1><p>You might have learnt a lot about quicksort sort. The problem is you have to keep track of the revision tour. Trust me this is supposed to be your last tour on quicksort sort. I will be using C++ to code/design my algorithm.</p><h5 id="quicksort-is-also-called-sorting-by-randomization">Quicksort is also called sorting by randomization</h5><p>Quicksort divides the list of numbers into low and high piles respectively. Suppose you choose any <code>p</code> from the list of numbers. It will be divided as the numbers greater than p and other pile where numbers are less than pile p. This method is called <code>partitioning.</code></p><p>Basically everything is done if you solve this partitioning problem.</p><p>Toooo eaassyy?? Yup, its easy and cooooll :)</p><pre><code>     quicksort(item_type s[],int low, int high){
+       int p;          /*Partitioning position index*/
+       if (high-1 &gt; 0){
+         p = partition(s,low,high);
+         quicksort(s,low,p-1);
+         quicksort(s,p+1,high);
+       }
+ }
+</code></pre><p>We can partition the array in one linear scan for a particular pivot element by maintaining three section of the array: less than pivot(to the left of the firsthigh), greater than or equal to the pivot (between firsthigh and i), and unexplored(to right of i), as implemented below:</p><pre><code>    int partition (item type s[], int low, int high){
+        int i;
+        int p;      // Pivot element index
+        int firsthigh;    //divider position for the index.
+
+        p = high;
+        firsthigh = 1;
+        for (int i = low; i &lt; high; i++){
+          if (s[i] &lt; s[p]){
+            swap(&amp;s[i],&amp;s[firsthigh]);
+            firsthigh++;
+          }
+        }
+        swap(&amp;s[p],&amp;s[firsthigh]);
+        return firsthigh;
+}
+</code></pre></article><div class="back"> <a href="/">Back</a></div></main></body></html>
